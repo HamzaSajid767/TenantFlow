@@ -1,0 +1,41 @@
+{
+  "name": "saasforge",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Multi-tenant SaaS API platform",
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @saasforge/api --filter @saasforge/worker --filter @saasforge/web dev",
+    "dev:api": "pnpm --filter @saasforge/api dev",
+    "dev:worker": "pnpm --filter @saasforge/worker dev",
+    "dev:web": "pnpm --filter @saasforge/web dev",
+    "build": "pnpm --filter @saasforge/shared build && pnpm --filter @saasforge/database build && pnpm --filter @saasforge/api build && pnpm --filter @saasforge/worker build && pnpm --filter @saasforge/web build",
+    "lint": "pnpm -r --if-present lint",
+    "lint:fix": "pnpm -r --if-present lint:fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm --filter @saasforge/api test && pnpm --filter @saasforge/worker test && pnpm --filter @saasforge/web test",
+    "test:int": "pnpm --filter @saasforge/api test:int",
+    "test:e2e": "pnpm test:int",
+    "db:generate": "pnpm --filter @saasforge/database generate",
+    "db:migrate": "pnpm --filter @saasforge/database migrate:dev",
+    "db:migrate:deploy": "pnpm --filter @saasforge/database migrate:deploy",
+    "db:seed": "pnpm --filter @saasforge/database seed",
+    "db:studio": "pnpm --filter @saasforge/database studio",
+    "postinstall": "pnpm db:generate"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "argon2",
+      "esbuild",
+      "prisma",
+      "@prisma/engines",
+      "msgpackr-extract",
+      "unrs-resolver"
+    ]
+  }
+}
