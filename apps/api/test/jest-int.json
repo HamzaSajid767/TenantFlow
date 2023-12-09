@@ -1,0 +1,21 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "..",
+  "testRegex": "test/.*\\.int-spec\\.ts$",
+  "transform": {
+    "^.+\\.ts$": [
+      "ts-jest",
+      {
+        "tsconfig": "tsconfig.json"
+      }
+    ]
+  },
+  "testEnvironment": "node",
+  "moduleNameMapper": {
+    "^@saasforge/shared$": "<rootDir>/../../packages/shared/src",
+    "^@saasforge/database$": "<rootDir>/../../packages/database/src"
+  },
+  "testTimeout": 30000,
+  "forceExit": true,
+  "setupFiles": ["<rootDir>/test/setup-env.ts"]
+}
