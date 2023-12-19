@@ -1,0 +1,8 @@
+node_modules
+dist
+.git
+coverage
+.env
+*.log
+apps/web/dist
+packages/database/src/generated
